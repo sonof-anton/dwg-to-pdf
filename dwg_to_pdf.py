@@ -93,6 +93,7 @@ def plot_one(console, dwg, pdf, work, ctb, paper, log):
         pdf.unlink()
     proc = subprocess.Popen(
         [str(console), "/i", str(copy), "/s", str(script), "/l", "en-US"],
+        cwd=work,  # accoreconsole drops <script>.log in its working folder
         stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL,
         creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
     try:
